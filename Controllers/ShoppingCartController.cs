@@ -73,10 +73,9 @@ namespace WebBanHang.Controllers
 
             return View();
         }
-
+        [HttpGet]
         public ActionResult CheckOutSuccess()
         {
-
             return View();
         }
 
@@ -92,6 +91,7 @@ namespace WebBanHang.Controllers
                 ShoppingCart cart = (ShoppingCart)Session["Cart"];
                 if (cart != null)
                 {
+                    /*return RedirectToAction("CheckOutSuccess");*/
                     Order or = new Order();
                     or.CustomerName = req.CustomerName;
                     or.Phone = req.Phone;
@@ -151,7 +151,7 @@ namespace WebBanHang.Controllers
                     contentAdmin = contentAdmin.Replace("{{ThanhTien}}", ThanhTien.ToString());
                     contentAdmin = contentAdmin.Replace("{{TongTien}}", TongTien.ToString());
                     WebBanHang.Common.Common.SendEmail("MyShop", "Đơn hàng mới #" + or.Code, contentAdmin.ToString(), ConfigurationManager.AppSettings["EmailAdmin"]);
-
+                    code = new { Success = true, code = 1 };
                     cart.ClearCart();
                     return RedirectToAction("CheckOutSuccess");
                 }
@@ -185,6 +185,8 @@ namespace WebBanHang.Controllers
                 {
                     item.ProductImg = checkProduct.ProductImage.FirstOrDefault(x => x.IsDefault).Image;
                 }
+
+                /*gán giá bán hiện tại cho thằng ShoppingCartItem để có thể tính thống kê và sử lý giá tiền*/
                 item.Price = checkProduct.Price;
                 if (checkProduct.PriceSale > 0)
                 {

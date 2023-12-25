@@ -130,3 +130,5 @@ C:\Users\KhuePD\source\repos\WebBanHang\WebBanHang\obj\Debug\WebBanHang.Migratio
 C:\Users\KhuePD\source\repos\WebBanHang\WebBanHang\bin\Dapper.dll
 C:\Users\KhuePD\source\repos\WebBanHang\WebBanHang\bin\Dapper.xml
 C:\Users\KhuePD\source\repos\WebBanHang\WebBanHang\obj\Debug\WebBanHang.Migrations.updateEmail.resources
+C:\Users\KhuePD\source\repos\WebBanHang\WebBanHang\obj\Debug\WebBanHang.Migrations.UpadateSubcrie.resources
+C:\Users\KhuePD\source\repos\WebBanHang\WebBanHang\obj\Debug\WebBanHang.Migrations.UpdateOriginalPrice.resources

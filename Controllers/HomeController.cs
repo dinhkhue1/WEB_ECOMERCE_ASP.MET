@@ -4,14 +4,21 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WebBanHang.Models;
+using WebBanHang.Models.EF;
 
 namespace WebBanHang.Controllers
 {
     public class HomeController : Controller
     {
+        private ApplicationDbContext db = new ApplicationDbContext();
         public ActionResult Index()
         {
             return View();
+        }
+
+        public ActionResult Partial_Subcrice()
+        {
+            return PartialView();
         }
 
         public ActionResult About()
@@ -19,6 +26,18 @@ namespace WebBanHang.Controllers
             ViewBag.Message = "Your application description page.";
 
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult Subscribe(Subcriber req)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Subcribers.Add(new Subcriber { Email = req.Email, CreatedDate = DateTime.Now });
+                db.SaveChanges();
+                return Json(new { Success = true });
+            }
+            return View("Partial_Subcrice", req);
         }
 
         public ActionResult Refresh()

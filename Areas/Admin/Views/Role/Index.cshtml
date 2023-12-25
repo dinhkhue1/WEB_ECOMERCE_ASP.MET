@@ -14,7 +14,7 @@
             <a href="/admin/home" class="nav-link">Trang chủ</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="/admin/order" class="nav-link">Danh sách đơn hàng order</a>
+            <a href="/admin/role" class="nav-link">Danh sách role</a>
         </li>
     </ul>
 }
@@ -35,17 +35,16 @@
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        #
+                        <th>STT</th>
+                        <th>Tên</th>
+                        <th></th>
                     </tr>
-                    <tr>Tên</tr>
-                    <th></th>
-
                 </thead>
                 <tbody>
-                    @if(Model != null && Model.Any())
+                    @if (Model != null && Model.Any())
                     {
                         var i = 1;
-                        foreach(var item in Model)
+                        foreach (var item in Model)
                         {
                             <tr>
                                 <td>
@@ -54,8 +53,9 @@
                                 <td>@item.Name</td>
                                 <td></td>
                             </tr>
+                            i++;
                         }
-                
+
                     }
                 </tbody>
             </table>
